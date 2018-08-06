@@ -33,10 +33,10 @@ $(document).ready(function(){
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
       id: 'mapbox.streets'
     }).addTo(peta_penduduk);
-    var posisi_penduduk = L.marker(posisi, {draggable: true}).addTo(peta_penduduk);
+    var posisi_penduduk = L.marker(posisi, {draggable: <?php echo ($penduduk['status_dasar'] == 1 ? "true" : "false"); ?>}).addTo(peta_penduduk);
     posisi_penduduk.on('dragend', function(e){
       	document.getElementById('lat').value = e.target._latlng.lat;
-		document.getElementById('lng').value = e.target._latlng.lng;
+		    document.getElementById('lng').value = e.target._latlng.lng;
     })
 
 })();
@@ -52,8 +52,10 @@ $(document).ready(function(){
 <input type="hidden" name="lat" id="lat" value="<?php echo $penduduk['lat']; ?>" />
 <input type="hidden" name="lng" id="lng" value="<?php echo $penduduk['lng']; ?>"/>
 <div class="buttonpane" style="text-align: right; width:420px;position:absolute;bottom:0px;">
+<?php if($penduduk['status_dasar'] == 1): ?>
 <div class="uibutton-group">
     <button class="uibutton reset" type="button" onclick="$(this).closest('.ui-dialog-content').dialog('close');">Batal</button>
 	<button class="uibutton confirm" type="submit" id="simpan_penduduk"><span class="fa fa-save"></span> Simpan</button>
 </div>
+<?php endif; ?>
 </div>

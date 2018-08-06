@@ -63,12 +63,14 @@
         <a href="<?php echo site_url()?>penduduk" class="uibutton icon prev">Kembali</a>
       <?php endif; ?>
     </div>
+    <?php if($penduduk['status_dasar_id'] == 1): ?>
     <div class="right">
       <div class="uibutton-group">
         <button class="uibutton" type="reset"><span class="fa fa-refresh"></span> Bersihkan</button>
         <button class="uibutton confirm" type="submit" ><span class="fa fa-save"></span> Simpan</button>
       </div>
     </div>
+    <?php endif; ?>
   </div>
 </form>
 </div>

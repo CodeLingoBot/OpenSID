@@ -677,7 +677,7 @@
 
 	function get_penduduk_map($id=0)
 	{
-		$sql   = "SELECT m.*,p.nama FROM tweb_penduduk_map m LEFT JOIN tweb_penduduk p ON m.id = p.id WHERE m.id = ? ";
+		$sql   = "SELECT m.*,p.nama,p.status_dasar FROM tweb_penduduk_map m RIGHT JOIN tweb_penduduk p ON m.id = p.id WHERE p.id = ? ";
 		$query = $this->db->query($sql,$id);
 		return $query->row_array();
 	}
